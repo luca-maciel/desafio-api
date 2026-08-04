@@ -1,7 +1,7 @@
 
 const express:any = require('express');
 const app:any = express();
-const PORT:number = 8081;
+const PORT:number = 8080;
 
 app.use("/", (req:any, res:any)=>{
     res.send("ta funfano");
