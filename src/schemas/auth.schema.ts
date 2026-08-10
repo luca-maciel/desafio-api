@@ -21,3 +21,15 @@ export const RegisterSchema = z.object({
 });
 
 export type RegisterSchemaType = z.infer<typeof RegisterSchema>;
+
+export const LoginSchema = z.object({
+  email: z
+    .string()
+    .email("Please enter a valid email"),
+
+  password: z
+    .string()
+    .min(6, "Password must contain at least 6 characters"),
+});
+
+export type LoginSchemaType = z.infer<typeof LoginSchema>;
