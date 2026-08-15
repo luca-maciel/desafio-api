@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { register } from '../services/user.service'
-import { RegisterSchema, LoginSchema } from "../schemas/auth.schema";
+import { RegisterSchema, LoginSchema, } from "../schemas/auth.schema";
 import { User } from "../../generated/prisma/browser";
 import { prisma } from "../lib/prisma";
 import bcrypt from "bcrypt";
@@ -12,10 +12,6 @@ const router = Router();
 router.get('/privateTest', authMiddleware, (req: any, res: any) => {
   res.json({ message: "rota privada acessada" })
 })
-
-router.get("/register", (req: any, res: any) => {
-  res.send("rota para form de registro");
-});
 
 router.post("/register", async (req, res) => {
   try {
@@ -115,6 +111,19 @@ router.get("/me", authMiddleware, async (req, res) => {
     return res.status(500).json({
       error: "Internal server error",
     });
+  }
+});
+
+router.post("/forgot-password", async (req, res)=>{
+  try{
+    const user:User|null = await getUserByEmail(req.body.email);
+    if (user){
+      res.send(user);
+    }
+  }
+  catch(err:any){
+    res.send({"erro": "email invalido"});
+    console.log(err);
   }
 });
 
