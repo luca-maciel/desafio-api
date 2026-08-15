@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-  "dev": "nodemon --exec tsx ./src/server.ts",
-  "start": "tsx ./src/server.ts"
+    "dev": "nodemon --exec tsx ./src/server.ts",
+    "start": "tsx ./src/server.ts"
   },
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "^7.9.1",
@@ -15,6 +15,7 @@
     "dotenv": "^17.4.2",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.3",
+    "nodemailer": "^9.0.5",
     "zod": "^4.4.3"
   },
   "devDependencies": {
@@ -23,6 +24,7 @@
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^22.20.1",
+    "@types/nodemailer": "^8.0.1",
     "nodemon": "^3.0.1",
     "prisma": "^7.9.1",
     "ts-node": "^10.9.2",

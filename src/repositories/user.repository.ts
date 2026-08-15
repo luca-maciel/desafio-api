@@ -54,4 +54,18 @@ async function getAllUsers() {
     return users;
 }
 
+export async function updateUserPassword(
+  userId: string,
+  password: string
+) {
+  return await prisma.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      password,
+    },
+  });
+}
+
 export { getAllUsers, getUserByName, getUserByEmail, getUserById, newUser };

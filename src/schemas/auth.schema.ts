@@ -20,6 +20,26 @@ export const RegisterSchema = z.object({
     .regex(/[^A-Za-z0-9]/, "A senha deve conter pelo menos um caractere especial"),
 });
 
+export const ResetPasswordSchema = z.object({
+  email: z
+    .string()
+    .email(),
+
+  code: z
+    .string()
+    .length(6),
+
+  password: z
+    .string()
+    .min(8)
+    .max(50)
+    .regex(/[A-Z]/, "Password must contain an uppercase letter.")
+    .regex(/[a-z]/, "Password must contain a lowercase letter.")
+    .regex(/[0-9]/, "Password must contain a number."),
+});
+
+export type ResetPasswordSchemaType = z.infer<typeof ResetPasswordSchema>;
+
 export type RegisterSchemaType = z.infer<typeof RegisterSchema>;
 
 export const LoginSchema = z.object({
